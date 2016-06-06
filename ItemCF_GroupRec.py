@@ -97,31 +97,6 @@ class ItemCF:
         rec_list = rec_candidate_X[0:top_N]
         return rec_list
 
-
-    # def Evaluate(self,kNN,top_N):
-    #     test = self.testdata
-    #     num_users = self.num_users
-    #
-    #     precision = 0
-    #     recall = 0
-    #     user_count = 0
-    #
-    #     for i in np.arange(0,num_users):
-    #         r_i = test[i]
-    #         test_items = np.nonzero(r_i)
-    #         test_items_idx = test_items[0]
-    #         if len(test_items_idx) == 0:    # if this user does not possess rating in the test set, then skip the evaluate procedure
-    #             continue
-    #         else:
-    #             rec_of_i = self.Recommendation(i,kNN,top_N)
-    #             hit_set = np.intersect1d(rec_of_i,test_items_idx)
-    #             precision = precision + len(hit_set) / (top_N * 1.0)
-    #             recall = recall + len(hit_set) / (len(test_items_idx) * 1.0)
-    #             user_count = user_count + 1
-    #     precision = precision / (user_count * 1.0)
-    #     recall = recall / (user_count * 1.0)
-    #     return precision,recall
-
     def EvaluateForGroupRec(self,kNN,top_N):
         train_ug = self.train_ug
         test_gi = self.test_gi
