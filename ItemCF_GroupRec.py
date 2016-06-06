@@ -76,7 +76,6 @@ class ItemCF:
         # recommend a top_N recommendation list for group_id
         train_ug = self.train_ug
         train_gi = self.train_gi
-        group_id = 1
 
         # find users of each group
         users = train_ug[:,group_id]
@@ -87,7 +86,7 @@ class ItemCF:
             individual_score = individual_score + self.Recommendation(user,kNN)
         group_score = individual_score / users_ingroup_idx.shape[0]
 
-        # items that the group has given
+        # items that the group has selected
         r_g = train_gi[group_id]
         rated_items = np.nonzero(r_g)
         rated_items_idx = rated_items[0]
@@ -98,7 +97,6 @@ class ItemCF:
         return rec_list
 
     def EvaluateForGroupRec(self,kNN,top_N):
-        train_ug = self.train_ug
         test_gi = self.test_gi
         num_groups = self.num_groups
 
@@ -106,7 +104,7 @@ class ItemCF:
         recall = 0
         group_count = 0
 
-        for i in np.arange(0,1):
+        for i in np.arange(0,num_groups):
             r_i = test_gi[i]                # firstly identify items that group i has rated
             test_items = np.nonzero(r_i)
             test_items_idx = test_items[0]
