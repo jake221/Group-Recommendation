@@ -4,7 +4,6 @@ __author__ = 'wangjinkun@mail.hfut.edu.cn'
 
 import time
 import numpy as np
-# import scipy.sparse as sparse
 
 def load_matrix(filename, num_users, num_items):
     t0 = time.time()
@@ -55,7 +54,7 @@ class ItemCF:
         print 'Finished calculating similarity matrix in %f seconds' % (t1-t0)
 
     def ItemCFPrediction(self,user_id,item_id,kNN):
-        # predict the preference of a user for an item
+        # predict the preference of a user for an item using kNN item-based collaborative filtering
         pred_score = 0
 
         train = self.train_ui
